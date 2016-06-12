@@ -31,7 +31,7 @@ top advanced analytics vendor (SAS) can be easily integrated into my favorite op
 I could now use my python scripts along with SAS procedures & JS charts to do what we all love to do - delight our
 users.
 
-<a name="tasks">x
+<a name="tasks">
 </a>So with that intent, my goal for the rest of this post is to show how this can be made possible.
 
 *************
