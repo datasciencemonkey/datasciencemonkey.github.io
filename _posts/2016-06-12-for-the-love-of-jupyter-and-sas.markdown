@@ -46,6 +46,7 @@ users.
 So with that intent, my goal for the rest of this post is to show how this can be made possible.
 
 <a name="tasks"></a>
+
 *************
 *<font color="red"> If you're thinking what's in it for me, read the Q&A below -</font>*
 
@@ -60,6 +61,7 @@ or Data Mining or Optimization Procedures.
 ********************
 
 <a name="note"></a>
+
 #### Note:
 ---------
 >Before we proceed any further, if you are a commercial SAS user who is interested in doing any of this (or to simply follow along),
