@@ -9,6 +9,7 @@ into their scientific training. We are simple beings, looking to deliver complex
 things as simple stories. After all, I struggle to remember anything more a point if it has to be explained
 in anything more than a 3 dimensional co-ordinate plane. The point is - we all solve problems breaking them down.
 
+[What do I get out of this](#tasks)
 
 I enjoy, relish and look forward to opportunities where I can work with tools that best allow me to express my creativity while not limiting my problem
 solving capabilities. This means, that  I am always looking to add tools to my arsenal that allow me to do what I do best - solve problems by
@@ -30,7 +31,8 @@ top advanced analytics vendor (SAS) can be easily integrated into my favorite op
 I could now use my python scripts along with SAS procedures & JS charts to do what we all love to do - delight our
 users.
 
-So with that intent, my goal for the rest of this post is to show how this can be made possible.
+<a name="tasks">x
+</a>So with that intent, my goal for the rest of this post is to show how this can be made possible.
 
 *************
 *<font color="red"> If you're thinking what's in it for me, just read the Q&A below -</font>*
