@@ -32,8 +32,9 @@ users.
 
 So with that intent, my goal for the rest of this post is to show how this can be made possible.
 
-*If you're thinking what's in it for me,just read the Q&A below -*
 *************
+*<font color="red"> If you're thinking what's in it for me, just read the Q&A below -</font>*
+
 1. How you could write something that might be custom to your org and execute that from a notebook?
   * I am going to show you a python module that I wrote to work with google trends data programmatically
 2. Integrate the results with SAS Analytics. This could your Machine Learning, Econometric or Time Series Forecasting
@@ -42,6 +43,7 @@ or Data Mining or Optimization Procedures.
 3. Visualize and circulate results in a format that makes sense for you
   * I am going to show how you could leverage the highcharts api for your visualization needs. But essentially your options are
     plenty here. For format conversions - we'll touch a bit on nbconvert and the basics of nbconvert.
+
 ********************
 
 #### Note:
