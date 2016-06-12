@@ -58,11 +58,12 @@ or Data Mining or Optimization Procedures.
 3. Visualize and circulate results in a format that makes sense for you
   * I am going to show how you could leverage the highcharts api for your visualization needs. But essentially your options are
     plenty here. For format conversions - we'll touch a bit on nbconvert and the basics of nbconvert.
+
 ********************
 
 <a name="note"></a>
 
-#### Note:
+#### **Note**:
 ---------
 >Before we proceed any further, if you are a commercial SAS user who is interested in doing any of this (or to simply follow along),
 make sure you have the SAS kernel and extensions for Jupyter installed. If you just want the link to get this done - [here](https://github.com/sassoftware/sas_kernel).
