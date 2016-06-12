@@ -3,13 +3,25 @@ published: true
 title:  For the love of Jupyter and SAS!
 layout: post
 ---
+## For the love of Jupyter and SAS!
+
+### Contents
+* ##### [Some Background and Motivations](#backstory)
+* ##### [What's in it for you](#tasks)
+* ##### [Before you actually start](#note)
+* ##### [Python and Google Trends](#pygoogletrends)
+* ##### [SAS and Forecasting](#sasforecasting)
+* ##### [Tying it all together with visualization](#visuals)
+* ##### [Document workflow with Jupyter and share results](#nbconvert)
+* ##### [Concluding Thoughts](#thoughts)
+
+<a name="backstory"></a>
 People enjoy doing certain things as a part of their daily jobs. One such thing for an analytics professional is to be able to work with the
 best in class tools to deliver top-notch decision support solutions while tapping
 into their scientific training. We are simple beings, looking to deliver complex
 things as simple stories. After all, I struggle to remember anything more a point if it has to be explained
 in anything more than a 3 dimensional co-ordinate plane. The point is - we all solve problems breaking them down.
 
-[What do I get out of this](#tasks)
 
 I enjoy, relish and look forward to opportunities where I can work with tools that best allow me to express my creativity while not limiting my problem
 solving capabilities. This means, that  I am always looking to add tools to my arsenal that allow me to do what I do best - solve problems by
@@ -31,11 +43,11 @@ top advanced analytics vendor (SAS) can be easily integrated into my favorite op
 I could now use my python scripts along with SAS procedures & JS charts to do what we all love to do - delight our
 users.
 
-<a name="tasks">
-</a>So with that intent, my goal for the rest of this post is to show how this can be made possible.
+So with that intent, my goal for the rest of this post is to show how this can be made possible.
 
+<a name="tasks"></a>
 *************
-*<font color="red"> If you're thinking what's in it for me, just read the Q&A below -</font>*
+*<font color="red"> If you're thinking what's in it for me, read the Q&A below -</font>*
 
 1. How you could write something that might be custom to your org and execute that from a notebook?
   * I am going to show you a python module that I wrote to work with google trends data programmatically
@@ -45,10 +57,13 @@ or Data Mining or Optimization Procedures.
 3. Visualize and circulate results in a format that makes sense for you
   * I am going to show how you could leverage the highcharts api for your visualization needs. But essentially your options are
     plenty here. For format conversions - we'll touch a bit on nbconvert and the basics of nbconvert.
-
 ********************
 
+<a name="note"></a>
 #### Note:
+---------
 >Before we proceed any further, if you are a commercial SAS user who is interested in doing any of this (or to simply follow along),
 make sure you have the SAS kernel and extensions for Jupyter installed. If you just want the link to get this done - [here](https://github.com/sassoftware/sas_kernel).
 If you'd like a bit more information on SAS and Jupyter and why - [check out this cool piece!](http://blogs.sas.com/content/sasdummy/2016/04/24/how-to-run-sas-programs-in-jupyter-notebook/)
+
+-------------------
