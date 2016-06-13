@@ -8,9 +8,9 @@ layout: post
 * ##### [What's in it for you](#tasks)
 * ##### [Before you actually start](#note)
 * ##### [Python and Google Trends](#pygoogletrends)
-* ##### [SAS and Forecasting](#sasforecasting)
+* ##### [Forecasting using SAS within Jupyter](#sasforecasting)
 * ##### [Tying it all together with visualization](#visuals)
-* ##### [Document workflow with Jupyter and share results](#nbconvert)
+* ##### [Document workflow with Jupyter and share results](#convert)
 * ##### [Concluding Thoughts](#thoughts)
 
 ##### <a name="backstory">Thoughts and Motivations</a>
@@ -67,6 +67,7 @@ make sure you have the SAS kernel and extensions for Jupyter installed. If you j
 If you'd like a bit more information on SAS and Jupyter and why - [check out this cool piece!](http://blogs.sas.com/content/sasdummy/2016/04/24/how-to-run-sas-programs-in-jupyter-notebook/)
 
 
+
 ##### <a name="pygoogletrends">Python and Google Trends</a>
 
 First things first, we need to get some data. Maybe some dummy data that can still be useful. Useful enough to get our imaginations flying.
@@ -80,7 +81,6 @@ We'll use the gtrends python module. You can pick it up from my github repo [her
 Methods that matter on the gtrends module that give you the data set you need, once you've imported the script into your workspace.
 
 ```python
-
 import pandas as pd
 from gt_parser import gTrends_Parser
 google_terms = 'amazon, ebay' # Example Terms
@@ -92,13 +92,14 @@ myParserObject.get_column_names()  # parses and displays the column names
 myParserObject.get_row_values()  # parses and displays row values
 myParserObject.get_data_frame_raw()  # reads and converts data into a raw data frame - Dates still need to be processed
 final_frame = myParserObject.get_data_frame_processed()
-
 ```
 Our data frame now looks like this. Clearly, some amount post processing is needed - which is what we'll do
 
 ![](https://datasciencemonkey.github.io/images/final_frame.png "processed frame")
 
-This then results in a pandas data frame that has the data we need to generate the dummy time series data.
+*The image above talks a bit about visualization but let's park that part for just a bit (We'll come back to it soon).*
+
+But from a data stand point, this results in a pandas data frame that has the data we need to generate the dummy time series data.
 
 From here, our **dummy visitation data** can be generated easily like this:
 
@@ -115,4 +116,29 @@ def dummy_data_builder(frame,scalar=1000000):
 sas_frame = dummy_data_builder(final_frame)  
 ```
 
-At this point, we should have a dataframe
+The sas_frame has the data that we need to forecast the dummy visitation data using time series modeling techniques.
+
+Next, we move this data into a SAS library after converting the pandas data frame into a csv file. This process is extremely simple, so let's move on to the juicy part - utilizing SAS procs inside jupyter.
+
+
+##### <a name="sasforecasting">SAS Forecasting in Jupyter</a>
+If you are a seasoned analytics pro, you know by now SAS produces a phenomenal array of forecasting products like SAS Forecast Server for High Performance Forecasting, SAS ETS for Econometrics and Time Series Analysis & Forecasting etc. These products coupled with SAS Studio/ Enterprise Guide/Forecast Server Studio greatly simplify the forecasting process by providing easy to use "canned tasks" or walk through GUIs that generate the SAS code for you. So, if you are lazy like me use these code generating tools to your advantage. Pick up the code and stick it right into your Jupyter notebook! From there, if you want to tweak this to your hearts content - sure, you always have the official user guide and the procedure documentation to fall back to.
+
+For this particular post, we'll simply use PROC ARIMA here to demonstrate the use of *<u>SAS within Juputer</u>* capability - but if you want to delve deep into Time Series Modeling topics (which is a huge topic in itself & beyond the scope of this post), check out other SAS reference materials.
+
+[INSERT SAS CODE HERE]
+
+Again, this could have been any SAS procedure that you have access to & relevant to your problem. I just happened to pick on a time series example for this post because of my liking for the SAS forecasting tools & the "quick bang for the buck" nature of these tools. For ex.- using SAS High Performance Forecasting Procedures one can automate the entire forecasting process fairly easily. You can do things like model selection bake-offs based on an optimizing metric from a slew of possible models, include dependent variables (i.e. add potential causals), define & automate transformations, include events for all types of effects, set up automatic outlier detection etc.
+
+##### <a name="visuals">OK, Let's get the results and visualize them</a>
+Now that we've obtained the forecasts, let's make a web ready,interactive, time series visualization from the results.
+
+We use the highcharts api for this and a little python module that makes this process extremely easy.
+
+[INCLUDE CODE TO MOVE DATA INTO PANDAS AND VISUALIZE]
+
+
+Now, that is simple and pleasing to the eye!
+
+##### <a name="convert">Great! Time to share our story!</a>
+As a bonus, let's see how to share your glittering analysis in a variety of formats, thanks to a little Jupyter extension - **nbconvert!**
