@@ -3,8 +3,6 @@ published: true
 title:  For the love of Jupyter and SAS!
 layout: post
 ---
-## For the love of Jupyter and SAS!
-
 ### Contents
 * ##### [Some Background and Motivations](#backstory)
 * ##### [What's in it for you](#tasks)
@@ -15,7 +13,7 @@ layout: post
 * ##### [Document workflow with Jupyter and share results](#nbconvert)
 * ##### [Concluding Thoughts](#thoughts)
 
-<a name="backstory"></a>
+##### <a name="backstory">Thoughts and Motivations</a>
 People enjoy doing certain things as a part of their daily jobs. One such thing for an analytics professional is to be able to work with the
 best in class tools to deliver top-notch decision support solutions while tapping
 into their scientific training. We are simple beings, looking to deliver complex
@@ -43,28 +41,79 @@ top advanced analytics vendor (SAS) can be easily integrated into my favorite op
 I could now use my python scripts along with SAS procedures & JS charts to do what we all love to do - delight our
 users.
 
-So with that intent, my goal for the rest of this post is to show how this can be made possible.
-
-<a name="tasks"></a>
-
-*<font color="red"> If you're thinking what's in it for me, read the Q&A below -</font>*
-
-1. How you could write something that might be custom to your org and execute that from a notebook?
-  * I am going to show you a python module that I wrote to work with google trends data programmatically
-2. Integrate the results with SAS Analytics. This could your Machine Learning, Econometric or Time Series Forecasting
-or Data Mining or Optimization Procedures.
-  * I am going to show you how to use simple ARIMA models from SAS ETS to build forecasts
-3. Visualize and circulate results in a format that makes sense for you
-  * I am going to show how you could leverage the highcharts api for your visualization needs. But essentially your options are
-    plenty here. For format conversions - we'll touch a bit on nbconvert and the basics of nbconvert.
 
 
-<a name="note"></a>
+##### <a name="tasks">WIIFM</a>
+*************
+*<font color="red"> If you're thinking what's in it for me, read the Q&A below to get a sense of what the rest of the post tries to accomplish</font>*
 
-#### **Note**:
+1. How can I write something that might be custom to your org and execute that from a notebook?
+  * In most cases, typical data prep involves writing transformations to massage the data in the context that best makes sense for your analysis step. But for this example, we'll work with web data. Specifically, we'll use one of my python modules that extracts data from google trends programmatically.
+
+2. How do I integrate the results with my favorite SAS procedures?
+  * I am going to show you how to use PROC ARIMA that ships with SAS ETS to build forecasts using ARIMA models on the data we collect from *Step1* above. In
+  general, this can be any SAS procedure that you have access to across Machine Learning, Forecasting, ETL and Data Mining.
+
+3. How can I export the results so we can visualize the data using a JS charting library?
+  * I am going to show how you could leverage the Highcharts API for your visualization needs.I use this as I find that it's simple to prep web ready time series visuals using this library. But essentially, your options are plenty here. SAS comes with a powerful set of visualization tools with strong statistical analysis capabilities. Similarly, there are a plenty of great open source visualization packages. You can go as fancy as you like but the point here is to demonstrate extensibility and the power of the Jupyter+SAS+Python combo while _highlighting_ how soon you can go from thought to execution in delivering a top-notch work product - one man army style!
+
+Finally we'll touch a bit on For format conversions - we'll touch a bit on nbconvert and the basics of nbconvert.
+********************
+
+##### <a name="note">Before you start :</a>
 ---------
->Before we proceed any further, if you are a commercial SAS user who is interested in doing any of this (or to simply follow along),
+>If you are a commercial SAS user who is interested in doing any of this (or to simply follow along),
 make sure you have the SAS kernel and extensions for Jupyter installed. If you just want the link to get this done - [here](https://github.com/sassoftware/sas_kernel).
 If you'd like a bit more information on SAS and Jupyter and why - [check out this cool piece!](http://blogs.sas.com/content/sasdummy/2016/04/24/how-to-run-sas-programs-in-jupyter-notebook/)
 
 -------------------
+
+##### <a name="pygoogletrends">Python and Google Trends</a>
+
+First things first, we need to get some data. Maybe some dummy data that can still be useful. Useful enough to get our imaginations flying.
+
+What ever your area of work is or the nature of your business is, insights from Google searches can tell profound stories. In the past, people I've worked with have asked - wouldn't it be cool if we could somehow tap into Google Trends Data ? So, to make things interesting, let's do just that. Get google trends data programmatically (no point in getting manual dumps of data on a csv file - it's no fun if you have to do this once a week for example) and cook-up some dummy data based on the trends.
+
+We'll use the gtrends python module. You can pick it up from my github repo [here](https://github.com/datasciencemonkey/gtrends) or even simpler, download a copy of the .py [script](https://github.com/datasciencemonkey/gtrends/blob/master/gtrends/gt_parser/gTrendsParser.py). Make sure you read the README file on the repo to understand how to apply this to whatever you might be interested in querying.
+
+**Note:** If the set up stuff bothers you, worry not! Simply download the [sample notebook](https://github.com/datasciencemonkey/sas_n_python/blob/master/Load_SAS_from_Python.ipynb) that covers all of this with SAS models in Jupyter.
+
+Methods that matter on the gtrends module that give you the data set you need, once you've imported the script into your workspace.
+
+```python
+
+import pandas as pd
+from gt_parser import gTrends_Parser
+google_terms = 'amazon, ebay' # Example Terms
+myParserObject = gTrends_Parser(google_terms)
+myParserObject.get_raw_data_blobs()  # Sends a get request and collects the data
+myParserObject.full_blob_dict  # has the entire data blob as a raw un-processed object
+myParserObject.table_data_dict  # has just the raw data
+myParserObject.get_column_names()  # parses and displays the column names
+myParserObject.get_row_values()  # parses and displays row values
+myParserObject.get_data_frame_raw()  # reads and converts data into a raw data frame - Dates still need to be processed
+final_frame = myParserObject.get_data_frame_processed()
+
+```
+Our data frame now looks like this. Clearly, some amount post processing is needed - which is what we'll do
+
+![](https://github.com/datasciencemonkey/datasciencemonkey.github.io/blob/master/images/final_frame.png)
+
+This then results in a pandas data frame that has the data we need to generate the dummy time series data.
+
+From here, our **dummy visitation data** can be generated easily like this:
+
+```python
+
+final_frame['amazon_visits']=0
+final_frame['ebay_visits']=0
+def dummy_data_builder(frame,scalar=1000000):
+    for i in range(len(frame)):
+        frame['amazon_visits'][i] = frame['amazon'][i] *(scalar + random.randint(1,10000))
+        frame['ebay_visits'][i] = frame['ebay'][i] *(scalar + random.randint(1,10000))
+    return frame
+# to see if we get the dummy data
+sas_frame = dummy_data_builder(final_frame)  
+```
+
+At this point, we should have a dataframe
