@@ -58,15 +58,14 @@ users.
   * I am going to show how you could leverage the Highcharts API for your visualization needs.I use this as I find that it's simple to prep web ready time series visuals using this library. But essentially, your options are plenty here. SAS comes with a powerful set of visualization tools with strong statistical analysis capabilities. Similarly, there are a plenty of great open source visualization packages. You can go as fancy as you like but the point here is to demonstrate extensibility and the power of the Jupyter+SAS+Python combo while _highlighting_ how soon you can go from thought to execution in delivering a top-notch work product - one man army style!
 
 Finally we'll touch a bit on For format conversions - we'll touch a bit on nbconvert and the basics of nbconvert.
+
 ********************
 
 ##### <a name="note">Before you start :</a>
----------
 >If you are a commercial SAS user who is interested in doing any of this (or to simply follow along),
 make sure you have the SAS kernel and extensions for Jupyter installed. If you just want the link to get this done - [here](https://github.com/sassoftware/sas_kernel).
 If you'd like a bit more information on SAS and Jupyter and why - [check out this cool piece!](http://blogs.sas.com/content/sasdummy/2016/04/24/how-to-run-sas-programs-in-jupyter-notebook/)
 
--------------------
 
 ##### <a name="pygoogletrends">Python and Google Trends</a>
 
@@ -97,7 +96,7 @@ final_frame = myParserObject.get_data_frame_processed()
 ```
 Our data frame now looks like this. Clearly, some amount post processing is needed - which is what we'll do
 
-![](https://github.com/datasciencemonkey/datasciencemonkey.github.io/blob/master/images/final_frame.png)
+![](https://datasciencemonkey.github.io/images/final_frame.png "processed frame")
 
 This then results in a pandas data frame that has the data we need to generate the dummy time series data.
 
