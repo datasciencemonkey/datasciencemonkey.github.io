@@ -14,16 +14,16 @@ layout: post
 * ##### [Concluding Thoughts](#thoughts)
 
 ##### <a name="backstory">Thoughts and Motivations</a>
-People enjoy doing certain things as a part of their daily jobs. One such thing for an analytics professional is to be able to work with the
+People enjoy doing certain things as a part of their jobs. One such thing for an analytics professional is to be able to work with the
 best in class tools to deliver top-notch decision support solutions while tapping
 into their scientific training. We are simple beings, looking to deliver complex
 things as simple stories. After all, I struggle to remember even one data point if it has to be explained
-in more than a 3 dimensional co-ordinate plane. In fact, most people that we know have same problems. The reason is as humans - our ability to process complexity is limited. But we still solve extremely complex problems. We do all this by breaking them down in smaller pieces and solving it one at a time.
+in more than a 3 dimensional co-ordinate plane. In fact, most people that we know have same problems. The reason is as humans - our ability to process complexity is limited. But we still solve extremely complex problems. We do all this by breaking them down in smaller pieces and solving it one piece at a time.
 
 
 In general, most people enjoy, relish and look forward to opportunities where they can work with tools that best allow them to express their creativity without limiting their problem solving capabilities. Something that encourages a fluent thought to execution paradigm.In fact this expectation is true with most practitioners - the need to minimize <u> thought to execution friction</u> is probably the single biggest productivity requirement of corporate America.
 
- In most mature analytically advanced organizations, data science professionals are constantly looking for solutions that best allow to express themselves swiftly,
+ In most mature analytically advanced organizations this need makes data science professionals to constantly look for solutions that best allow to express themselves swiftly,
 efficiently and with the least amount of friction (learning curve) while making sure they make no compromises on the end product. This becomes imperative as the scope of your data science team widens and the impact you make in the organization
 increases. In fact, we all know learning from data quickly and efficiently
 gives your organization not just the competitive advantage but sometimes, the best chance of survival.
@@ -39,23 +39,21 @@ top advanced analytics vendor (SAS) can be easily integrated into my favorite op
 I could now use my python scripts along with SAS procedures & JS charts to do what we all love to do - delight our
 users.
 
-
-
-##### <a name="tasks">WIIFM</a>
+##### <a name="tasks">So, WIIFM /Cut to the chase</a>
 *************
-*<font color="red"> If you're thinking what's in it for me, read the Q&A below to get a sense of what the rest of the post tries to accomplish</font>*
+*<font color="black"> <b> If you're thinking what's in it for me, read the Q&A below to get a sense of what the rest of the post tries to accomplish</font></b>*
 
 1. How can I write something that might be custom to your org and execute that from a notebook?
-  * In most cases, typical data prep involves writing transformations to massage the data in the context that best makes sense for your analysis step. But for this example, we'll work with web data. Specifically, we'll use one of my python modules that extracts data from google trends programmatically.
+  * In most cases, typical data prep involves writing transformations to massage the data in the context that best makes sense for your analysis step. But for this post, we'll work with web data. Specifically, we'll use one of my python modules that extracts data from google trends programmatically.
 
 2. How do I integrate the results with my favorite SAS procedures?
-  * I am going to show you how to use PROC ARIMA that ships with SAS ETS to build forecasts using ARIMA models on the data we collect from *Step1* above. In
-  general, this can be any SAS procedure that you have access to across Machine Learning, Forecasting, ETL and Data Mining.
+  * We'll see how to use PROC ARIMA that ships with SAS ETS to build forecasts using ARIMA models on the data we collect from *Step1* above. In
+  general, this can be any SAS procedure that you have access to across Machine Learning, Forecasting, ETL and Data Mining depending on the nature of the problem you're trying to solve.
 
 3. How can I export the results so we can visualize the data using a JS charting library?
-  * I am going to show how you could leverage the Highcharts API for your visualization needs.I use this as I find that it's simple to prep web ready time series visuals using this library. But essentially, your options are plenty here. SAS comes with a powerful set of visualization tools with strong statistical analysis capabilities. Similarly, there are a plenty of great open source visualization packages. You can go as fancy as you like but the point here is to demonstrate extensibility and the power of the Jupyter+SAS+Python combo while _highlighting_ how soon you can go from thought to execution in delivering a top-notch work product - one man army style!
+  * We'll see how you could leverage the Highcharts API for your visualization needs.I use this as I find that it's simple to prep web ready time series visuals. But essentially, your options are plenty here. SAS comes with a powerful set of visualization tools with strong statistical analysis capabilities. Similarly, there are a plenty of great open source visualization packages. You can go as fancy as you like but the point here is to demonstrate extensibility and the power of the Jupyter+SAS+Python combo while _highlighting_ how you can quickly go from thought to execution while delivering a top-notch work product!
 
-Finally we'll touch a bit on For format conversions - we'll touch a bit on nbconvert and the basics of nbconvert.
+Finally we'll touch a bit on nbconvert and the basics of nbconvert to show how to export all your good work and serve it up in other formats.
 
 ********************
 
@@ -132,7 +130,7 @@ proc import datafile="dummy_data.csv"
      dbms=csv
      replace;
 run;
-/*Print to see the data we just imported*/
+/*Print to see the data we imported*/
 proc print data = sashelp.dummy_fsct_data (obs=4) ;
 run;
 
@@ -157,7 +155,7 @@ run;
 ```
 Again, this could have been any SAS procedure that you have access to & relevant to your problem. I just happened to pick on a time series example for this post because of my liking for the SAS forecasting tools & the "quick bang for the buck" nature of these tools. While I use only SAS ETS here (as a glimpse into what's possible), using SAS High Performance forecasting one can automate the entire forecasting process very easily. You can do things like model selection bake-offs based on an optimizing metric from a slew of possible models, include dependent variables (i.e. add potential causals), define & automate transformations, include events for all types of effects, set up automatic outlier detection etc.
 
-Finally we combine the forecasts we just generated and prep them up for visualization
+Finally we combine the forecasts we just generated and prep them up for visualization.
 
 ```sql
 %%SAS
@@ -180,9 +178,17 @@ We use the highcharts api for this and a little python module (pandas-highcharts
 <img src="https://datasciencemonkey.github.io/images/forecasting_animation.gif" style='width:100%;' border="0" alt="Null">
 
 
-Now, that is not just simple but it is pleasing to the eye & interactive!
+Now, that is not just simple but it is pleasing to the eye & interactive! All inside the Jupyter Notebook!
 
 I did skip the part of moving the SAS results into the pandas dataframe, but you can see that in the [notebook here](https://github.com/datasciencemonkey/sas_n_python/blob/master/Load_SAS_from_Python.ipynb).
 
 ##### <a name="convert">Great! Time to share our story!</a>
 As a bonus, let's see how to share your glittering analysis in a variety of formats, thanks to a little Jupyter extension - **nbconvert!**
+Nb convert allows you to convert your analysis to html/latex/pdf or even [revealjs slides](http://lab.hakim.se/reveal-js/#/).
+
+The basic idea is simple. Install nbconvert and then install reveal-js locally and then run the following command to convert the jupyter notebook into slides from the directory where you have your notebook.
+
+```bash
+jupyter nbconvert <my_notebook.ipynb> --to slides
+```
+This will produce a .slides.html file on the same folder. You can then simply serve this up during your presentation to get produce these type of [results](http://lab.hakim.se/reveal-js/#/). You can also easily change the themes and transitions. Beyond this, you can automate the whole process quite easily.Maybe I'll show that in another post.
