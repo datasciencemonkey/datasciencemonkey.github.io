@@ -186,3 +186,5 @@ I did skip the part of moving the SAS results into the pandas dataframe, but you
 
 ##### <a name="convert">Great! Time to share our story!</a>
 As a bonus, let's see how to share your glittering analysis in a variety of formats, thanks to a little Jupyter extension - **nbconvert!**
+
+<img src="https://github.com/datasciencemonkey/sas_n_python/blob/master/Load_SAS_from_Python.ipynb" style='width:100%;' border="0" alt="Null">
