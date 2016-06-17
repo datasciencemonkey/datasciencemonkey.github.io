@@ -2,7 +2,7 @@ excerpt_separator: ""
 pygments: true
 markdown: kramdown
 url: http://datasciencemonkey.github.io
-title: Get Set, Go!
+title: Get Set Go!
 tagline: 
 description: On Analytics, Data Science and More...
 paginate: 5
