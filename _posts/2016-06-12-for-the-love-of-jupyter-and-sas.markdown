@@ -59,7 +59,7 @@ Finally we'll touch a bit on nbconvert and the basics of nbconvert to show how t
 
 ##### <a name="note">Before you start :</a>
 >If you are a commercial SAS user who is interested in doing any of this (or to simply follow along),
-make sure you have the SAS kernel and extensions for Jupyter installed. If you just want the link to get this done - [here](https://github.com/sassoftware/sas_kernel).
+make sure you have the SAS kernel and extensions for Jupyter installed (only available for linux at the time of this post). If you just want the link to get this done - [here](https://github.com/sassoftware/sas_kernel).
 If you'd like a bit more information on SAS and Jupyter and why - [check out this cool piece!](http://blogs.sas.com/content/sasdummy/2016/04/24/how-to-run-sas-programs-in-jupyter-notebook/)
 
 
