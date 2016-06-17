@@ -93,7 +93,7 @@ final_frame = myParserObject.get_data_frame_processed()
 ```
 Our data frame now looks like this. Clearly, some amount post processing is needed - which is what we'll do
 
-![](https://datasciencemonkey.github.io/images/final_frame.png  "processed frame ")
+<img src="https://datasciencemonkey.github.io/images/final_frame.png" style='width:100%;' border="0" alt="Null">
 
 *The image above talks a bit about visualization but let's park that part for just a bit (We'll come back to it soon).*
 
@@ -175,15 +175,14 @@ quit;
 ##### <a name="visuals">OK, Let's get the results and visualize them</a>
 Now that we've obtained the forecasts, let's make a web ready,interactive, time series visualization from the results.
 
-We use the highcharts api for this and a little python module (pandas-highcharts) to help us easily accomplish this easily. Your choice could be plotly/matplotlib/gplot or ggvis or even D3 depending on your preference, but once again - following the idea that simple things are elegant :-
+We use the highcharts api for this and a little python module (pandas-highcharts) to help us easily accomplish this easily. Your choice could be plotly/matplotlib/gplot or ggvis or even D3 depending on your preference, but once again - following the theme of the post we'll keep things simple and elegant.
 
 <img src="https://datasciencemonkey.github.io/images/forecasting_animation.gif" style='width:100%;' border="0" alt="Null">
 
 
 Now, that is not just simple but it is pleasing to the eye & interactive!
 
-I did skip the part of moving the SAS results into the pandas dataframe, but you can see that in the [notebook](https://github.com/datasciencemonkey/sas_n_python/blob/master/Load_SAS_from_Python.ipynb).
+I did skip the part of moving the SAS results into the pandas dataframe, but you can see that in the [notebook here](https://github.com/datasciencemonkey/sas_n_python/blob/master/Load_SAS_from_Python.ipynb).
 
 ##### <a name="convert">Great! Time to share our story!</a>
 As a bonus, let's see how to share your glittering analysis in a variety of formats, thanks to a little Jupyter extension - **nbconvert!**
-
