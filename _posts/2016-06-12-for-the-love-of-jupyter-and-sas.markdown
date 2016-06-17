@@ -41,7 +41,7 @@ users.
 
 ##### <a name="tasks">So, WIIFM /What will I get out of this?</a>
 *************
-*<font color="black"> <b> If you're thinking what's in it for me, read the Q&A below to get a sense of what the rest of the post tries to accomplish</font></b>*
+*<font color="black"> <b> If you're thinking what's in it for me, read the Q&A below to get a sense of what the rest of the post tries to accomplish</b></font>*
 
 1. How can I write something that might be custom to my org and execute that from a notebook?
   * In most cases, typical data prep involves writing transformations to massage the data in the context that best makes sense for your analysis step. But for this post, we'll work with web data. Specifically, we'll use one of my python modules that extracts data from google trends programmatically.
