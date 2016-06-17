@@ -3,6 +3,6 @@ pygments: true
 markdown: kramdown
 url: http://datasciencemonkey.github.io
 title: Another Blog on All Things Analytics
-tagline: A log of everyday life
+tagline: 
 description: Analytics, Data Science and More...
 paginate: 5
