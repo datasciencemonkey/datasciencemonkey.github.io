@@ -191,4 +191,4 @@ The basic idea is simple. Install nbconvert and then install reveal-js locally a
 ```bash
 jupyter nbconvert <my_notebook.ipynb> --to slides
 ```
-This will produce a .slides.html file on the same folder. You can then simply serve this up during your presentation to get produce these type of [results](http://lab.hakim.se/reveal-js/#/). You can also easily change the themes and transitions. Beyond this, you can automate the whole process quite easily.Maybe I'll show that in another post.
+This will produce a .slides.html file on the same folder. You can then simply serve this up during your presentation to get produce these type of [results](http://lab.hakim.se/reveal-js/#/). You can also easily change the themes and transitions. Beyond this, you can automate the whole process quite easily. Maybe I'll show that in another post later.
