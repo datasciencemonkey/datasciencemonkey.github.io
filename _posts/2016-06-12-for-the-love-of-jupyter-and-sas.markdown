@@ -39,7 +39,7 @@ top advanced analytics vendor (SAS) can be easily integrated into my favorite op
 I could now use my python scripts along with SAS procedures & JS charts to do what we all love to do - delight our
 users.
 
-##### <a name="tasks">So, WIIFM /Cut to the chase</a>
+##### <a name="tasks">So, WIIFM /What will I get out of this?</a>
 *************
 *<font color="black"> <b> If you're thinking what's in it for me, read the Q&A below to get a sense of what the rest of the post tries to accomplish</font></b>*
 
