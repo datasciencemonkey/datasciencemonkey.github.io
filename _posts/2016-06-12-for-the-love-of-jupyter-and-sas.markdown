@@ -17,15 +17,13 @@ layout: post
 People enjoy doing certain things as a part of their daily jobs. One such thing for an analytics professional is to be able to work with the
 best in class tools to deliver top-notch decision support solutions while tapping
 into their scientific training. We are simple beings, looking to deliver complex
-things as simple stories. After all, I struggle to remember anything more a point if it has to be explained
-in anything more than a 3 dimensional co-ordinate plane. The point is - we all solve problems breaking them down.
+things as simple stories. After all, I struggle to remember even one data point if it has to be explained
+in more than a 3 dimensional co-ordinate plane. In fact, most people that we know have same problems. The reason is as humans - our ability to process complexity is limited. But we still solve extremely complex problems. We do all this by breaking them down in smaller pieces and solving it one at a time.
 
 
-I enjoy, relish and look forward to opportunities where I can work with tools that best allow me to express my creativity while not limiting my problem
-solving capabilities. This means, that  I am always looking to add tools to my arsenal that allow me to do what I do best - solve problems by
-breaking them down into smaller pieces & yet provide the right platform where I can tap into the best of breed tools custom built for a purpose. Something that encourages a quick thought to execution paradigm.In fact this expectation is true with most people.
+In general, most people enjoy, relish and look forward to opportunities where they can work with tools that best allow them to express their creativity without limiting their problem solving capabilities. Something that encourages a fluent thought to execution paradigm.In fact this expectation is true with most practitioners - the need to minimize <u> thought to execution friction</u> is probably the single biggest productivity requirement of corporate America.
 
-In most mature analytically advanced organizations, data science professionals are constantly looking for solutions that best allow to express themselves swiftly,
+ In most mature analytically advanced organizations, data science professionals are constantly looking for solutions that best allow to express themselves swiftly,
 efficiently and with the least amount of friction (learning curve) while making sure they make no compromises on the end product. This becomes imperative as the scope of your data science team widens and the impact you make in the organization
 increases. In fact, we all know learning from data quickly and efficiently
 gives your organization not just the competitive advantage but sometimes, the best chance of survival.
@@ -124,21 +122,67 @@ Next, we move this data into a SAS library after converting the pandas data fram
 ##### <a name="sasforecasting">SAS Forecasting in Jupyter</a>
 If you are a seasoned analytics pro, you know by now SAS produces a phenomenal array of forecasting products like SAS Forecast Server for High Performance Forecasting, SAS ETS for Econometrics and Time Series Analysis & Forecasting etc. These products coupled with SAS Studio/ Enterprise Guide/Forecast Server Studio greatly simplify the forecasting process by providing easy to use "canned tasks" or walk through GUIs that generate the SAS code for you. So, if you are lazy like me use these code generating tools to your advantage. Pick up the code and stick it right into your Jupyter notebook! From there, if you want to tweak this to your hearts content - sure, you always have the official user guide and the procedure documentation to fall back to.
 
-For this particular post, we'll simply use PROC ARIMA here to demonstrate the use of *<u>SAS within Juputer</u>* capability - but if you want to delve deep into Time Series Modeling topics (which is a huge topic in itself & beyond the scope of this post), check out other SAS reference materials.
+For this particular post, we'll simply use PROC ARIMA here to demonstrate the use of *<u>SAS within Jupyter</u>* capability - but if you want to delve deep into Time Series Modeling topics (which is a huge topic in itself & beyond the scope of this post), check out other SAS reference materials. Notice that %%SAS is used to invoke the SAS Jupyter cell magic.
 
-[INSERT SAS CODE HERE]
+```sql
+%%SAS
+/*Import the data file that we just created*/
+proc import datafile="dummy_data.csv"
+     out= sashelp.dummy_fsct_data
+     dbms=csv
+     replace;
+run;
+/*Print to see the data we just imported*/
+proc print data = sashelp.dummy_fsct_data (obs=4) ;
+run;
 
-Again, this could have been any SAS procedure that you have access to & relevant to your problem. I just happened to pick on a time series example for this post because of my liking for the SAS forecasting tools & the "quick bang for the buck" nature of these tools. For ex.- using SAS High Performance Forecasting Procedures one can automate the entire forecasting process fairly easily. You can do things like model selection bake-offs based on an optimizing metric from a slew of possible models, include dependent variables (i.e. add potential causals), define & automate transformations, include events for all types of effects, set up automatic outlier detection etc.
+/*Run ARIMA & generate forecasts */
+proc arima data=sashelp.dummy_fsct_data plots
+    (only)=(forecast(forecast ))
+        out=sashelp.amz_dummy_visits_fcst;
+    identify var=amazon_visits(12);
+    estimate p=(1) (12) q= (12) method=ML;
+    forecast lead=12 back=2 alpha=0.05 id=cal_date interval=month;
+    outlier;
+run;
+
+proc arima data=sashelp.dummy_fsct_data plots
+    (only)=(forecast(forecast ))
+        out=sashelp.ebay_dummy_visits_fcst;
+    identify var=ebay_visits(1);
+    estimate p=(1)(12) q= (12) method=ML;
+    forecast lead=12 back=2 alpha=0.05 id=cal_date interval=month;
+    outlier;
+run;
+```
+Again, this could have been any SAS procedure that you have access to & relevant to your problem. I just happened to pick on a time series example for this post because of my liking for the SAS forecasting tools & the "quick bang for the buck" nature of these tools. While I use only SAS ETS here (as a glimpse into what's possible), using SAS High Performance forecasting one can automate the entire forecasting process very easily. You can do things like model selection bake-offs based on an optimizing metric from a slew of possible models, include dependent variables (i.e. add potential causals), define & automate transformations, include events for all types of effects, set up automatic outlier detection etc.
+
+Finally we combine the forecasts we just generated and prep them up for visualization
+
+```sql
+%%SAS
+proc sql;
+create table sashelp.dummy_visits_fcst  as
+select a.cal_date, a.ebay_visits, a.forecast as ebay_forecasts,
+b.amazon_visits,b.forecast as amazon_forecasts
+from sashelp.ebay_dummy_visits_fcst a inner join
+sashelp.amz_dummy_visits_fcst b
+on a.cal_date = b.cal_date;
+run;
+quit;
+```
 
 ##### <a name="visuals">OK, Let's get the results and visualize them</a>
 Now that we've obtained the forecasts, let's make a web ready,interactive, time series visualization from the results.
 
-We use the highcharts api for this and a little python module that makes this process extremely easy.
+We use the highcharts api for this and a little python module (pandas-highcharts) to help us easily accomplish this easily. Your choice could be plotly/matplotlib/gplot or ggvis or even D3 depending on your preference, but once again - following the idea that simple things are elegant :-
 
-[INCLUDE CODE TO MOVE DATA INTO PANDAS AND VISUALIZE]
+![](https://datasciencemonkey.github.io/images/forecasting_animation.gif)
 
 
-Now, that is simple and pleasing to the eye!
+Now, that is not just simple but it is pleasing to the eye & interactive!
+
+I did skip the part of moving the SAS results into the pandas dataframe, but you can see that in the [notebook](https://github.com/datasciencemonkey/sas_n_python/blob/master/Load_SAS_from_Python.ipynb).
 
 ##### <a name="convert">Great! Time to share our story!</a>
 As a bonus, let's see how to share your glittering analysis in a variety of formats, thanks to a little Jupyter extension - **nbconvert!**
