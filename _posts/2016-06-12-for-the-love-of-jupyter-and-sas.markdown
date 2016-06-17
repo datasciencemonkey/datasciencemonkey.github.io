@@ -93,7 +93,7 @@ final_frame = myParserObject.get_data_frame_processed()
 ```
 Our data frame now looks like this. Clearly, some amount post processing is needed - which is what we'll do
 
-![](https://datasciencemonkey.github.io/images/final_frame.png "processed frame")
+![](https://datasciencemonkey.github.io/images/final_frame.png  "processed frame ")
 
 *The image above talks a bit about visualization but let's park that part for just a bit (We'll come back to it soon).*
 
@@ -177,7 +177,7 @@ Now that we've obtained the forecasts, let's make a web ready,interactive, time 
 
 We use the highcharts api for this and a little python module (pandas-highcharts) to help us easily accomplish this easily. Your choice could be plotly/matplotlib/gplot or ggvis or even D3 depending on your preference, but once again - following the idea that simple things are elegant :-
 
-![](https://datasciencemonkey.github.io/images/forecasting_animation.gif)
+![](https://datasciencemonkey.github.io/images/forecasting_animation.gif =200)
 
 
 Now, that is not just simple but it is pleasing to the eye & interactive!
