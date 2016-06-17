@@ -2,8 +2,8 @@ excerpt_separator: ""
 pygments: true
 markdown: kramdown
 url: http://datasciencemonkey.github.io
-title: Get Set Go!
+title: Another Blog on All Things Analytics
 tagline: 
-description: On Analytics, Data Science and More...
+description: Analytics, Data Science and More...
 paginate: 5
 google_analytics: UA-79207830-1
