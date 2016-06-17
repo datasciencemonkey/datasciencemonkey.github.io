@@ -2,7 +2,7 @@ excerpt_separator: ""
 pygments: true
 markdown: kramdown
 url: http://datasciencemonkey.github.io
-title: Practice,Preach & Reflect
+title: Practice & Reflect
 tagline: 
 description: On Analytics, Data Science and More...
 paginate: 5
