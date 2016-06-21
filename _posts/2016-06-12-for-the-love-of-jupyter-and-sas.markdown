@@ -1,6 +1,6 @@
 ---
 published: true
-title: Jupyter & SAS - Unlocking the perfect toolkit for analytics
+title: So, you love Jupyter and SAS.. 
 layout: post
 ---
 ### Contents
