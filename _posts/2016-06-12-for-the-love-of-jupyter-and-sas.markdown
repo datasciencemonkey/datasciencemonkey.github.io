@@ -1,6 +1,6 @@
 ---
 published: true
-title: So, you love Jupyter and SAS.. 
+title: So, we love Jupyter & SAS...
 layout: post
 ---
 ### Contents
