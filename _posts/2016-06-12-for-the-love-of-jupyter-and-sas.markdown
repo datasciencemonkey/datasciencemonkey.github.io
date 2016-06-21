@@ -69,7 +69,7 @@ If you'd like a bit more information on SAS and Jupyter and why - [check out thi
 
 First things first, we need to get some data. Maybe some dummy data that can still be useful. Useful enough to get our imaginations flying.
 
-What ever your area of work is or the nature of your business is, insights from Google searches can tell profound stories. In the past, people I've worked with have asked - wouldn't it be cool if we could somehow tap into Google Trends Data ? So, to make things interesting, let's do just that. Get google trends data programmatically (no point in getting manual dumps of data on a csv file - it's no fun if you have to do this once a week for example) and cook-up some dummy data based on the trends.
+What ever your area of work is or the nature of your business is, insights from Google search can tell profound stories. In the past, people I've worked with have asked - wouldn't it be cool if we could somehow tap into Google Trends Data ? So, to make things interesting, let's do just that. Get google trends data programmatically (no point in getting manual dumps of data on a csv file - it's no fun if you have to do this once a week for example) and cook-up some dummy data based on the trends.
 
 We'll use the gtrends python module. You can pick it up from my github repo [here](https://github.com/datasciencemonkey/gtrends) or even simpler, download a copy of the .py [script](https://github.com/datasciencemonkey/gtrends/blob/master/gtrends/gt_parser/gTrendsParser.py). Make sure you read the README file on the repo to understand how to apply this to whatever you might be interested in querying.
 
