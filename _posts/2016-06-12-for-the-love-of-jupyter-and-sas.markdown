@@ -174,7 +174,7 @@ quit;
 ##### <a name="visuals">OK, Let's get the results and visualize them</a>
 Now that we've obtained the forecasts, let's make a web ready,interactive, time series visualization from the results.
 
-We use the highcharts api for this and a little python module (pandas-highcharts) to help us accomplish this easily. Your choice could be plotly/matplotlib/gplot or ggvis or even D3 depending on your preference, but once again - following the theme of the post, we'll keep things simple and elegant.
+We use the highcharts api for this and a little python module (pandas-highcharts) to help us accomplish this easily. Your choice could be plotly/matplotlib/sgplot/ggplot or ggvis or even D3 depending on your preference, but once again - following the theme of the post, we'll keep things simple and elegant.
 
 <img src="https://datasciencemonkey.github.io/images/forecasting_animation.gif" style='width:100%;' border="0" alt="Null">
 
