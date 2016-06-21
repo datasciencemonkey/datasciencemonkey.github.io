@@ -14,7 +14,6 @@ layout: post
 * ##### [Concluding Thoughts](#thoughts)
 
 ##### <a name="backstory">Thoughts and Motivations</a>
-Read on if you do or even if you don't. Chances are you'll love what you see.
 
 People enjoy doing certain things as a part of their jobs. One such thing for an analytics professional is to be able to work with the
 best in class tools to deliver top-notch decision support solutions while tapping
