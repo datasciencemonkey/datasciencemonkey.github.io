@@ -11,7 +11,6 @@ layout: post
 * ##### [Forecasting using SAS within Jupyter](#sasforecasting)
 * ##### [Tying it all together with visualization](#visuals)
 * ##### [Document workflow with Jupyter and share results](#convert)
-* ##### [Concluding Thoughts](#thoughts)
 
 ##### <a name="backstory">Thoughts and Motivations</a>
 
